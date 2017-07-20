@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <title>新金贷</title>
+	    <link rel="stylesheet" type="text/css" href="css/weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery-weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/swiper-3.4.2.min.css"/>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery-weui.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/city-picker.min.js"></script>
+		<!--<script src="js/swiper.js"></script>-->
+		<style type="text/css">
+			.weui-photo-browser-modal{
+				z-index: 100;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide"><img class="jpg1" src="img/scenery2.jpg" alt=""></div>
+				<div class="swiper-slide"><img class="jpg1" src="img/scenery3.jpg" alt=""></div>
+				<div class="swiper-slide"><img class="jpg1" src="img/scenery4.jpg" alt=""></div>
+			</div>
+			<div class="swiper-pagination"></div>
+		</div>
+		<input type="button" id="info" value="通知" />
+	</body>
+	<script type="text/javascript">
+		$(".swiper-container").swiper({
+			direction: 'horizontal',
+			loop: true,
+			autoplay: 3000,
+			autoplayDisableOnInteraction:false,
+			pagination: '.swiper-pagination',
+		});
+		/*图片浏览器*/
+		var pb1 = $.photoBrowser({
+			items: [{
+				image: "img/scenery2.jpg",
+				caption: "描述文案"
+			},
+			{
+				image: "img/scenery3.jpg",
+				caption: "描述文案"
+			},
+			{
+				image: "img/scenery4.jpg",
+				caption: "描述文案"
+			},
+			{
+				image: "img/scenery2.jpg",
+				caption: "描述文案"
+			},     //把第一个对象复制一份放到最后
+			],
+		});
+		$(".jpg1").click(function(){
+			var index=$(".jpg1").index($(this))
+			pb1.open(index-1)
+			/*console.log(index)*/     //打印的是1234 234 234   所以上面要减一
+		})
+		/*通知*/
+		$(document).on("click", "#info", function() {
+			$.noti({
+				title: "中奖啦！",
+				text: "点击领取腾讯撸啊撸杯二等奖！",
+				media: "<img src='./images/present.png' />",
+				data: {
+					message: "逗你玩的!"
+				},
+				time: 3000,
+				onClick: function(data) {
+					$.alert("傻瓜",data.message);
+				}
+			});
+		});
+	</script>
+</html>

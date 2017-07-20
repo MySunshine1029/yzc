@@ -1,0 +1,123 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: #eaeaea;
+	color: #333;
+	padding-bottom: 45px;
+}
+#wrap{
+	width: 100%;
+}
+#banner{
+	height: 240px;
+	background: url(../img/bg.jpg) no-repeat 0 0/100% 100%;
+	text-align: center;
+	color: #FFF;
+	position: relative;
+	margin-bottom: 10px;
+}
+.title{
+	height: 40px;
+	line-height: 40px;
+	font-size: 16px;
+	position: relative;
+}
+.title span{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	left: 15px;
+}
+.logo{
+	padding:10px 0 15px 0;
+}
+.logo img{
+	display: block;
+	margin: 0 auto;
+	width: 53px;
+	height: 53px;
+	border: 1px solid #ccc;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.person{
+	font-size: 15px;
+}
+#money{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	text-align: center;
+}
+#money div{
+	flex: 1;
+	position: relative;
+}
+.after:after{
+	content: "";
+	border-left: 1px solid #eaeaea;
+	height: 25px;
+	position: absolute;
+	right: 0;
+	top: 15px;
+	opacity: 0.4;
+	filter: alpha(opacity=40);
+}
+.fontSize16{
+	font-size: 16px;
+}
+.fontSize15{
+	font-size: 15px;
+}
+.fontSize13{
+	font-size: 13px;
+	padding: 10px 0 20px 0;
+	color: #ffe3df;
+}
+#loan{
+	background: #fff;
+	height:70px;
+	line-height: 70px;
+	font-size: 20px;
+	padding-left: 15px;
+	margin-bottom: 10px;
+}
+#loan input{ochi
+	margin-left: 20px;
+	outline: none;
+	border: none;
+	font-size: 20px;
+}
+.clearMar{
+	margin: 0;
+}
+.clearbor{
+	border: none;
+	outline: none;
+}
+.fontRight{
+	text-align: right;
+}
+#repayment{
+	position: fixed;
+	bottom: 0;
+	background: #ccc;/*#fc604a*/
+	color: #fff;
+	text-align: center;
+	height: 45px;
+	line-height: 45px;
+	width: 100%;
+	border: none;
+}
+
+/*替换掉原本的样式*/
+.toolbar .picker-button{
+	color:#FF7049;
+}
+.weui-cells_radio .weui-check:checked+.weui-icon-checked:before{
+	color:#FF7049;
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <title>新金贷</title>
+	    <link rel="stylesheet" type="text/css" href="css/weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery-weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/swiper-3.4.2.min.css"/>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery-weui.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/city-picker.min.js"></script>
+		<style type="text/css">
+			i.icon.icon-next{
+				background: url(img/bg.jpg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="weui-tab">
+			<div class="weui-tab__bd">
+				<div id="tab1" class="weui-tab__bd-item weui-tab__bd-item--active">
+					<h1>页面一</h1>
+					<div class="swiper-container">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide"><img class="jpg1" src="img/scenery2.jpg" alt=""></div>
+							<div class="swiper-slide"><img class="jpg1" src="img/scenery3.jpg" alt=""></div>
+							<div class="swiper-slide"><img class="jpg1" src="img/scenery4.jpg" alt=""></div>
+						</div>
+						<div class="swiper-pagination"></div>
+					</div>
+				</div>
+				<div id="tab2" class="weui-tab__bd-item">
+					<h1>页面二</h1>
+					<!--地址-->
+					<input type="text" id="address" value="河南省 郑州市"/>
+					
+					<input type="text" id="picker" />
+					<!--日历-->
+					<input type="text" id="rili" />
+					<input type="text" id="con" style="border: 1px solid #FF7049;"/>
+					
+					<!--日期时间-->
+					<input type="text" id="riqi" />
+					<input type="text" id="riqi1" value="2017-7-7 12时	" />
+					<input type="text" id="riqi2" value="2012-2-2 上午" />
+					<input type="text" id="riqi3" value="2017-7-7 上午8点" />
+					<input type="text" id="riqi4" value="2017年12月12号 12点12分12时" />
+				</div>
+				<div id="tab3" class="weui-tab__bd-item">
+					<h1>页面三</h1>
+					<!--<img id="jpg1" style="width: 100%;" src="img/scenery1.jpg"/>-->
+				</div>
+				<div id="tab4" class="weui-tab__bd-item">
+					<h1>页面四</h1>
+				</div>
+			</div>
+		
+			<div class="weui-tabbar" style="position: fixed;">
+				<a href="#tab1" class="weui-tabbar__item weui-bar__item--on">
+					<span class="weui-badge" style="position: absolute;top: -.4em;right: 1em;">8</span>
+					<div class="weui-tabbar__icon">
+						<img src="img/bg.jpg" alt="">
+					</div>
+					<p class="weui-tabbar__label">微信</p>
+				</a>
+				<a href="#tab2" class="weui-tabbar__item">
+					<div class="weui-tabbar__icon">
+						<img src="img/bg.jpg" alt="">
+					</div>
+					<p class="weui-tabbar__label">通讯录</p>
+				</a>
+				<a href="#tab3" class="weui-tabbar__item">
+					<div class="weui-tabbar__icon">
+						<img src="img/bg.jpg" alt="">
+					</div>
+					<p class="weui-tabbar__label">发现</p>
+				</a>
+				<a href="#tab4" class="weui-tabbar__item">
+					<div class="weui-tabbar__icon">
+						<img src="img/bg.jpg" alt="">
+					</div>
+					<p class="weui-tabbar__label">我</p>
+				</a>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(".swiper-container").swiper({
+			direction: 'horizontal',
+			loop: true,
+			autoplay: 3000,
+			autoplayDisableOnInteraction:false,
+			pagination: '.swiper-pagination',
+		});
+		/*地址*/
+		$("#address").cityPicker({
+			title:"请选择地址",
+			/*showDistrict: false*/   //只选择省市
+			onChange: function(picker, values, displayValues) {
+				console.log(values, displayValues);
+			}
+		})
+		
+		$('#picker').picker({
+			title:"您来自哪里",
+			cols:[
+				{
+					textAlign:"center",
+					values:["郑州","开封","焦作","安阳","新乡"]
+				},
+				{
+					textAlign:"center",
+					values:["郑州","开封","焦作","安阳","新乡"]
+				},
+			],
+			toolbarCloseText:"完美",
+			onchange:function(){
+				
+			},
+			onClose:function(){
+				/*alert(1)*/
+			}
+		})
+		/*日历*/
+		$("#rili").calendar({
+			onChange:function(p, values, displayValues){
+				console.log(p,values,displayValues)
+			},
+			/*multiple:true,*/   //是否多选
+			value:"2017年7月7日",
+			dateFormat:"yyyy年mm月dd日",   //中文格式
+		})
+		$("#con").calendar({
+			container: "#inline-calendar"
+		})
+		/*日期时间*/
+		$("#riqi").datetimePicker({
+			title:"选择日期时间",
+			toolbarCloseText:"时间",
+			min:"1990-11-11",
+			max:"2020-12-12",
+			onChange:function(picker,values,displatValues){
+				console.log(values,displatValues)
+			}
+		})
+		/*2017-02-02 12时*/
+		$("#riqi1").datetimePicker({
+			times: function() {
+				return [{
+					values: (function() {
+						var hours = [];
+						for(var i = 0; i < 24; i++) hours.push(i > 9 ? i : '0' + i);    //为了达到01这种效果   但是默认的也是01
+						return hours;
+					})()
+				}, {
+					divider: true, // 这是一个分隔符
+					content: '时'
+				}];
+			},
+		})
+		/*201-07-07 上午*/
+		$("#riqi2").datetimePicker({
+			times: function() {
+				return [{
+					values: ["上午","下午"]
+				}];
+			},
+		})
+		/*定制时间*/
+		$("#riqi3").datetimePicker({
+			times: function() {
+				return [{
+					values: ["上午8点","下午2点","晚上7点"]
+				}];
+			},
+		})
+		$("#riqi4").datetimePicker({
+	        title: '自定义格式',
+	        yearSplit: '年',
+	        monthSplit: '月',
+	        dateSplit: '日',
+	        times: function () {
+		        return [  // 自定义的时间
+		            {
+		              values: (function () {
+		                var hours = [];
+		                for (var i=0; i<24; i++) hours.push(i > 9 ? i : '0'+i);
+		                return hours;
+		              })()
+		            },
+		            {
+		              divider: true,  // 这是一个分隔符
+		              content: '时'
+		            },
+		            {
+		              values: (function () {
+		                var minutes = [];
+		                for (var i=0; i<59; i++) minutes.push(i > 9 ? i : '0'+i);
+		                return minutes;
+		              })()
+		            },
+		            {
+		              divider: true,  // 这是一个分隔符
+		              content: '分'
+		            }
+		        ];
+			},
+			onChange: function(picker, values, displayValues) {
+				console.log(values);
+			}
+		});
+		/*图片浏览器*/
+		var pb1 = $.photoBrowser({
+			items: [{
+				image: "img/scenery2.jpg",
+				caption: "描述文案"
+			},
+			{
+				image: "img/scenery3.jpg",
+				caption: "描述文案"
+			},
+			{
+				image: "img/scenery4.jpg",
+				caption: "描述文案"
+			},
+			],
+			/*initIndex:1*/
+		});
+		$(".jpg1").click(function(){
+			pb1.open()
+		})
+	</script>
+</html>

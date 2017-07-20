@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>新金贷</title>
+    <link rel="stylesheet" type="text/css" href="css/weui.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/jquery-weui.min.css"/>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/jquery-weui.min.js"></script>
+	<script src="js/swiper.min.js"></script>
+	<script src="js/city-picker.min.js"></script>
+    <link rel="stylesheet" href="css/index.css" />
+    <script type="text/javascript">
+    	
+   		document.addEventListener('plusready', function(){
+   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
+   			
+   			
+   		});
+   		
+    </script>
+</head>
+<body>
+	<div id="wrap">
+		<div id="header"><span><</span>基本信息</div>
+		<div id="hint"><span></span>请确保填写真实身份信息，否则无法通过申请</div>
+		<div id="empty"></div>
+		<div id="main">
+			<form action="" method="post">
+				<div class="weui-cells weui-cells_form clearMar clearbor">
+					<div class="weui-cell">
+						<div class="weui-cell__hd"><label for="name" class="weui-label">联系方式</label></div>
+						<div class="weui-cell__bd fontRight">
+							<input class="weui-cell__hd clearbor fontSize fontRight" id="tel" name="tel" type="number" onkeyup="onKeyup()" placeholder="请输入联系方式">
+						</div>
+					</div>
+					<div class="weui-cell">
+						<div class="weui-cell__hd"><label for="name" class="weui-label">申请金额</label></div>
+						<div class="weui-cell__bd">
+							<input class="weui-input fontRight" id="money" name="money" type="text" value="3000" onchange="onKeyup()" readonly="">
+						</div>
+					</div>
+					<div class="weui-cell">
+						<div class="weui-cell__hd"><label for="name" class="weui-label">贷款申请期限</label></div>
+						<div class="weui-cell__bd">
+							<input class="weui-input fontRight" id="date" name="date" type="text" onchange="onKeyup()" readonly="" placeholder="请选择 >">
+						</div>
+					</div>
+				</div>
+				<div id="agree">
+					<input id="agreeCheck" type="checkbox" checked="checked" onclick="onKeyup()"/><label class="fontSize13" for="agreeCheck">我已阅读并同意<span>《知情告知书》</span></label>
+				</div>
+				<input id="complete" class="weui-btn weui-btn_disabled weui-btn_primary" type="submit" disabled="disabled" value="完成"/>
+			</form>
+			
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	$("#money").select({
+		title: "选择金额",
+		items: ["1000","3000","5000","10000"]
+	});
+	$("#date").select({
+		title: "选择期限",
+		items: ["3个月","6个月","12个月","18个月"]
+	});
+	
+	var telreg=/^1(3|4|5|7|8)\d{9}$/
+	function onKeyup(a){
+		var tel=$("#tel"),
+			money=$("#money"),
+			date=$("#date");
+		if(tel.val()!=""&&telreg.test(tel.val())&&money.val()!=""&&date.val()!=""&&date.val()!="请选择"&&$("#agreeCheck").is(':checked')){    //agreeVal只能已传值的方式传给a，才能接受到正确的值  如果直接用agreeVal，他的值是全局中的值
+			$("#complete").css("background","#FF7049").removeAttr("disabled");
+			
+		}else{
+			$("#complete").css("background","#ccc").attr("disabled","disabled")
+		}
+	}
+	
+</script>
+</html>

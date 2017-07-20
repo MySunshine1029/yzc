@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	    <title>新金贷</title>
+		<link rel="stylesheet" type="text/css" href="css/weui.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/jquery-weui.min.css"/>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery-weui.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+		<script src="js/city-picker.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/index2.css"/>
+	</head>
+	<body>
+		<div id="wrap">
+			<div id="banner">
+				<div class="title"><span><</span>用钱宝-智融时代</div>
+				<div class="logo"><img src="" alt="" /></div>
+				<div class="person">已有3625人申请</div>
+				<div id="money">
+					<div class="after">
+						<p class="fontSize16">2000~30000</p>
+						<p class="fontSize13">申请金额（元）</p>
+					</div>
+					<div class="after">
+						<p class="fontSize16">6~12</p>
+						<p class="fontSize13">申请期限（月）</p>
+					</div>
+					<div>
+						<p class="fontSize16">4.5</p>
+						<p class="fontSize13">利率（%）</p>
+					</div>
+				</div>
+			</div>
+			<form action="" method="post">
+				<div id="loan"><span>￥</span><input id="jk" name="jk" type="number" onkeyup="onKeyup()" placeholder="请输入借款金额"/></div>
+				<div class="weui-cells weui-cells_form clearMar clearbor">
+					<div class="weui-cell">
+						<div class="weui-cell__hd"><label for="name" class="weui-label fontSize16">贷款申请期限</label></div>
+						<div class="weui-cell__bd">
+							<input class="weui-input fontRight fontSize15" id="date" name="date" type="text" onchange="onKeyup()" readonly="" placeholder="请选择 >">
+						</div>
+					</div>
+					<div class="weui-cell">
+						<div class="weui-cell__hd"><label for="name" class="weui-label fontSize16">还款方式</label></div>
+						<div class="weui-cell__bd">
+							<input class="weui-input fontRight fontSize15" id="method" name="method" type="text" onchange="onKeyup()" value="等额本息" readonly="">
+						</div>
+					</div>
+					<div class="weui-cell">
+						<div class="weui-cell__hd"><label for="name" class="weui-label fontSize16">借款总利息</label></div>
+						<div class="weui-cell__bd">
+							<input class="weui-input fontRight fontSize15" id="interest" name="interest" type="text" value="0.0" readonly="">
+						</div>
+					</div>
+				</div>
+				<input id="repayment" disabled="disabled" type="submit" value="立即还款"/>
+			</form>
+			
+			<!--<button id="dianji">点击</button>-->
+			<!--搜索-->
+			<div class="weui-search-bar" id="searchBar">
+				<form class="weui-search-bar__form">
+					<div class="weui-search-bar__box">
+						<i class="weui-icon-search"></i>
+						<input type="search" class="weui-search-bar__input" id="searchInput" placeholder="搜索" required="">
+						<a href="javascript:" class="weui-icon-clear" id="searchClear"></a>
+					</div>
+					<label class="weui-search-bar__label" id="searchText">
+			      <i class="weui-icon-search"></i>
+			      <span>搜索</span>
+			    </label>
+				</form>
+				<a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+			</div>
+			
+			<div class="weui-form-preview">
+				<div class="weui-form-preview__hd">
+					<label class="weui-form-preview__label">付款金额</label>
+					<em class="weui-form-preview__value">¥2400.00</em>
+				</div>
+				<div class="weui-form-preview__bd">
+					<div class="weui-form-preview__item">
+						<label class="weui-form-preview__label">商品</label>
+						<span class="weui-form-preview__value">电动打蛋机</span>
+					</div>
+					<div class="weui-form-preview__item">
+						<label class="weui-form-preview__label">标题标题</label>
+						<span class="weui-form-preview__value">名字名字名字</span>
+					</div>
+					<div class="weui-form-preview__item">
+						<label class="weui-form-preview__label">标题标题</label>
+						<span class="weui-form-preview__value">很长很长的名字很长很长的名字很长很长的名字很长不断获得更多更多更多滚蛋滚蛋滚蛋滚很长的名字很长很长的名字</span>
+					</div>
+				</div>
+				<div class="weui-form-preview__ft">
+					<a class="weui-form-preview__btn weui-form-preview__btn_default" href="javascript:">辅助操作</a>
+					<button type="submit" class="weui-form-preview__btn weui-form-preview__btn_primary" href="javascript:">操作</button>
+				</div>
+				<div class="weui-panel__ft">
+					<a href="javascript:void(0);" class="weui-cell weui-cell_access weui-cell_link">
+						<div class="weui-cell__bd">查看更多</div>
+						<span class="weui-cell__ft"></span>
+					</a>
+				</div>
+			</div>
+			
+		</div>
+	</body>
+	<script type="text/javascript">
+		$("#date").select({
+			title: "选择期限",
+			items: ["3个月","6个月","12个月","18个月"]
+		});
+		$("#method").select({
+			title: "还款方式",
+			items: ["等额本息","等额本金","等额递增","按期付息还本"]
+		});
+		function onKeyup(){
+			var jk=$("#jk"),
+				date=$("#date"),
+				method=$("#method"),
+				interest=$("#interest");
+			if(jk.val()!=""&&jk.val()!="请输入借款金额"&&date.val()!=""&&date.val()!="请选择 >"){
+				var qx=parseInt(date.val()),
+					je=jk.val(),
+					fs=method.val();
+				if(fs=="等额本息"){
+					var qian=je*qx*0.02*Math.pow(1+0.02,qx)/[Math.pow(1+0.02,qx)-1]-je
+				}else if(fs=="等额本金"){
+					var qian=(qx+1)*je*0.02/2
+				}else if(fs=="等额递增"){
+					var qian=je*qx*0.02*Math.pow(1+0.02,qx)/[Math.pow(1+0.02,qx)-1]-je
+				}else if(fs=="按期付息还本"){
+					var qian=je*qx*0.02*Math.pow(1+0.02,qx)/[Math.pow(1+0.02,qx)-1]-je
+				}
+				interest.val(qian.toFixed(2))
+				$("#repayment").css("background","#fc604a").removeAttr("disabled")
+			}else{
+					$("#repayment").css("background","#ccc").attr("disabled","disabled")
+			}
+		}
+		$("#dianji").click(function(){
+			$.alert({
+				title:"微信",
+				text:"微信挺厉害的",
+				onOK:function(){
+					$.toast("操作成功")
+				}
+			})
+		})
+		$("#dianji").click(function(){
+			$.confirm({
+				title:"微信",
+				text:"微信挺厉害的",
+				onOK:function(){
+					$.toast("操作成功")
+				},
+				onCancel:function(){
+					/*$.toast("操作失败","cancel")*/
+					$.showLoading()
+					setTimeout(function(){
+						$.hideLoading()
+					},1000)
+				}
+			})
+		})
+		$("#dianji").click(function(){
+			$.prompt({
+				title:"HBuilder",
+				text:"活了",
+				input:"鹿晗",
+				empty:false,
+				onOK:function(text){
+					$.alert({
+						title:"名字",
+						text:"您的名字："+text
+					})
+				},
+				onCancel:function(){
+					
+				}
+			})
+		})
+		$("#dianji").click(function(){
+			$.login({
+				title:"登录",
+				text:"请登录",
+				username:"123",
+				password:"456",
+				onOK:function(){
+					$.toast("登录成功")
+				},
+				onCancel:function(){
+					$.toast("取消登录","cancel")
+				}
+			})
+		})
+		
+	</script>
+</html>

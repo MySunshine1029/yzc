@@ -1,0 +1,79 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background: #eaeaea;
+}
+#wrap{
+	width: 100%;
+}
+#header{
+	height: 44px;
+	line-height: 44px;
+	text-align: center;
+	background: #fe6d56;
+	color: #fff;
+	font-size: 17px;
+	position: relative;
+}
+#header span{
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	position: absolute;
+	left: 15px;
+}
+#hint{
+	height: 30px;
+	line-height: 30px;
+	background: #eaeaea;
+	padding-left: 40px;
+	font-size: 13px;
+	color: #ff7049;
+}
+#empty{
+	height: 10px;
+	background: #f2f2f2;
+}
+.clearMar{
+	margin: 0;
+}
+.clearbor{
+	border: none;
+	outline: none;
+}
+.fontSize{
+	font-size: 16px;
+}
+.fontRight{
+	text-align: right;
+}
+.fontSize13{
+	font-size: 13px;
+	color: #969696;
+}
+.fontSize13 span{
+	color: #FF7049;
+}
+#complete{
+	width: 90%;
+	background: #ccc;
+	border: none;
+	color: #fff;
+}
+#agree{
+	padding: 15px 0 25px 15px;
+}
+#agree input{
+	margin-right: 5px;
+}
+
+/*替换掉原本的样式*/
+.toolbar .picker-button{
+	color:#FF7049;
+}
+.weui-cells_radio .weui-check:checked+.weui-icon-checked:before{
+	color:#FF7049;
+}
+
