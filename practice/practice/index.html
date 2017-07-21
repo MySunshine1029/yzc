@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-2.1.0.js"></script>
+		<script src="js/jquery.form.js"></script>
+		<style type="text/css">
+			#outline:focus{
+				box-shadow: 1px 1px 10px 1px #eee;
+				/*outline-color: red;*/
+				
+			}
+		</style>
+	</head>
+	<body>
+		<input type="checkbox" name="" id="my_input" value="" />
+		<button type="button" onclick="test()">检测</button>
+		<div id="remove">
+			<i>你好</i>
+			<p class="p">再见</p>
+		</div>
+		<input type="text" id="outline"/>
+		
+		<input type="text" name="mm" id="mm" value="" />
+		<input type="text" name="dd" id="dd" value="" />
+		
+		<form action="" method="post" id="form">
+			<input type="text" name="fo" id="fo" value="" />
+			<input type="submit" value="提交"/>
+		</form>
+		
+		<script type="text/javascript">
+			var abc="12个月"
+			console.log(parseInt(abc))  //12
+			/*检测checkbox是否被选中*/
+			function test() {
+				alert($("#my_input").attr("checked"))
+				if($("#my_input").is(':checked')) {
+					alert("YES");
+				} else {
+					alert("NO");
+				}
+			}
+			console.log()
+			/*移除某个元素*/
+			$("#remove").children().eq(1).remove()   //相当于$(".p").remove()
+			/*$("#remove")[0].removeChild($("#remove")[0].childNodes[1])*/
+			
+			/*$.ajax({
+				type:"post",
+				url:"",
+				async:true
+			});*/
+			$(function(){
+				$("#form").submit(function(){
+					$(this).ajaxSubmit();
+					return false;
+				})
+			})
+			
+		</script>
+	</body>
+</html>

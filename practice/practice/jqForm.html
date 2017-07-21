@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="div1">
+        <form id="form1" method="get" action="#">
+            <p>我的名字：<input type="text" name="name" value="请输入内容" /></p>
+            <p>我的偶像是：<input type="radio" name="Idol" value="刘德华" />刘德华   <input type="radio" name="Idol" value="张学友" />张学友</p>
+            <p>我喜欢的音乐类型：<input type="checkbox" name="musictype" value="1.摇滚">摇滚  <input type="checkbox" name="musictype" value="2.轻松">轻柔  <input type="checkbox" name="musictype" value="3.爵士">爵士</p>
+            <p><input type="submit" value="确认" /></p>
+        </form>
+    </div>
+    <div id="div2">
+    </div>
+	</body>
+</html>
+<script src="js/jquery-2.1.0.js" type="text/javascript"></script>
+<script src="js/jquery.form.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(":submit").click(function () {
+                var options = {
+                    url: "",
+                    target: "#div2",
+                    success: function () {
+                        alert("ajax请求成功");
+                    }
+                };
+                $("#form1").ajaxForm(options);
+            })
+        })
+        /*$("#form1").ajaxForm();　　相当于以下两行：
+
+　　　　　 $("#form1").submit(function(){
+			$("#form1").ajaxSubmit();
+			return false;
+		})*/　　  //也就是说ajaxFrom()会自动阻止表单提交。而ajaxSubmit()不会自动阻止表单提交，想阻止表单提交，要自己return false;
+    </script>
